@@ -1,5 +1,5 @@
 ## Overview
-- This project involves receiving events (install/reatribution/event) generated from mobile advertising, storing them in MongoDB, and allowing clients to download and review the events that occurred over a specific period through a CSV file.
+- This project involves receiving events (install/reattribution/event) generated from mobile advertising, storing them in MongoDB, and allowing clients to download and review the events that occurred over a specific period through a CSV file.
 - The system was designed with independent scaling of each component, asynchronous processing for throttling, and cost-efficiency in mind, using an event-driven architecture.
     - **relay-api**: Designed to easily scale by adding servers in response to increased requests.
     - **relay-client-api**: Tasks that can lead to significant server resource usage are throttled, and in case of increased CSV requests, independent scale-up/out mechanisms can be employed.
