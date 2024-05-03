@@ -5,6 +5,12 @@
     - **relay-client-api**: Tasks that can lead to significant server resource usage are throttled, and in case of increased CSV requests, independent scale-up/out mechanisms can be employed.
     - **relay-processor**: Minimizes database load and optimizes performance by consuming Kafka messages in batches for bulk insert into database.
 
+## System Design Diagram
+![architecture](https://github.com/app-scale/.github/assets/16813807/aa93acf8-8274-4706-afba-43928e2bbee4)
+
+## Monitoring Dashboard Example
+![dashboard](https://github.com/yb-toy-relay/.github/assets/16813807/a2ae40b6-6921-4161-a319-a912279d314c)
+
 ## Skills Used
 | category             | skills                                                                                                       |
 |----------------------|--------------------------------------------------------------------------------------------------------------|
@@ -13,10 +19,6 @@
 | Middleware           | Kafka / MongoDB / Schema Registry / Jenkins                                                                  |
 | AWS                  | ElasticBeanstalk / S3 / MSK (kafka) / ALB / CloudWatch / CloudFront / S3 / EventBridge / Glue / CodePipeline |
 | ETC                  | Git / Jira / Slack                                                                                           |
-
-## System Design Diagram
-![architecture](https://github.com/app-scale/.github/assets/16813807/aa93acf8-8274-4706-afba-43928e2bbee4)
-
 
 ## Repository & Application Component
 |       component              |                                                     description                                                    |
@@ -96,10 +98,3 @@
     - Utilizing the API Destination feature supported by EventBridge, it's possible to specify an API endpoint to call when a specific event occurs.
     - In this way, the relay-client-api receives information about the CSV file uploaded to S3 through another API endpoint. It then generates a URL for accessing the CSV file and sends this URL to the user's email.
     - The access URL for the CSV file included in the user's email is a presigned URL that is valid for only 1 hour, ensuring that all CSV files in S3 are not publicly accessible, and only the user who requested it through the presigned URL can access it for 1 hour.
-
-
-## Monitoring
-- Basic metrics provided by Elastic Beanstalk are utilized, and custom metrics (CPU/memory/disk usage) for each EC2 instance are sent using the CloudWatch agent.
-- Metric threshold alerts detected by CloudWatch are sent to Slack by integrating AWS Chatbot with Slack.
-- dashboard example
-  ![dashboard](https://github.com/yb-toy-relay/.github/assets/16813807/a2ae40b6-6921-4161-a319-a912279d314c)
