@@ -1,11 +1,18 @@
 ## Overview
-
 - This project involves receiving events (install/reatribution/event) generated from mobile advertising, storing them in MongoDB, and allowing clients to download and review the events that occurred over a specific period through a CSV file.
 - The system was designed with independent scaling of each component, asynchronous processing for throttling, and cost-efficiency in mind, using an event-driven architecture.
     - **relay-api**: Designed to easily scale by adding servers in response to increased requests.
     - **relay-client-api**: Tasks that can lead to significant server resource usage are throttled, and in case of increased CSV requests, independent scale-up/out mechanisms can be employed.
     - **relay-processor**: Minimizes database load and optimizes performance by consuming Kafka messages in batches for bulk insert into database.
 
+## Skills Used
+| category             | skills                                                                                                       |
+|----------------------|--------------------------------------------------------------------------------------------------------------|
+| Language             | Java17 / JavaScript / HTML / CSS                                                                             |
+| Framework            | Springboot / React                                                                                           |
+| Middleware           | Kafka / MongoDB / Schema Registry / Jenkins                                                                  |
+| AWS                  | ElasticBeanstalk / S3 / MSK (kafka) / ALB / CloudWatch / CloudFront / S3 / EventBridge / Glue / CodePipeline |
+| ETC                  | Git / Jira / Slack                                                                                           |
 
 ## System Design Diagram
 ![architecture](https://github.com/app-scale/.github/assets/16813807/aa93acf8-8274-4706-afba-43928e2bbee4)
