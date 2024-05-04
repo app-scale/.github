@@ -89,6 +89,7 @@
     - Firstly, my understanding of Kubernetes isn't extensive. Secondly, the system wasn't large enough to warrant adopting a container-based deployment architecture like Kubernetes. I believed that introducing such a system would have been over-engineering.
 - **Q) Why use a message broker at all? Given the functionalities, it seems like you could just insert data directly into the database from the API server and return database queries for CSV requests immediately.**
     - The message broker is used for asynchronous processing and throttling of any requests that could potentially strain the server.
+    - Without a message broker, requests coming in through a callback URL would have to be inserted into the database one by one, which would increase unnecessary round trips and database load. As the number of API requests increases, scaling out the API servers would proportionally increase the database load as well. However, with the current method of using a message broker to throttle, scaling out the API servers does not impact the database at all.
 - **Q) Why use Kafka?**
     - Not only for its performance aspects (zero-copy, sequential I/O) but also because, unlike SQS or RabbitMQ, it allows the re-reading of messages once they've already been read.
 - **Q) Why use schema registry?**
